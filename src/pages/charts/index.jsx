@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import * as echarts from 'echarts';
+import './index.less'
 
 const option = {
   title: {
-    text: 'Referer of a Website',
-    subtext: 'Fake Data',
+    text: '占比',
+    subtext: '%',
     left: 'center'
   },
   tooltip: {
@@ -20,11 +21,8 @@ const option = {
       type: 'pie',
       radius: '50%',
       data: [
-        { value: 1048, name: 'Search Engine' },
-        { value: 735, name: 'Direct' },
-        { value: 580, name: 'Email' },
-        { value: 484, name: 'Union Ads' },
-        { value: 300, name: 'Video Ads' }
+        { value: 1048, name: '通过' },
+        { value: 735, name: '过期' },
       ],
       emphasis: {
         itemStyle: {
@@ -38,10 +36,15 @@ const option = {
 };
 
 function Home() {
-  
-  const chartDom = document.getElementById('pie-chart');
-  const myChart = echarts.init(chartDom);
-  myChart.setOption(option)
+  const initChart = () => {
+    const chartDom = document.getElementById('pie-chart');
+    const myChart = echarts.init(chartDom);
+    myChart.setOption(option)
+  } 
+
+  useEffect(() => {
+    initChart()
+  },[])
 
   return (
     <div id="pie-chart">
