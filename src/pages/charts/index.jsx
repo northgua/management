@@ -4,8 +4,8 @@ import './index.less'
 
 const option = {
   title: {
-    text: '占比',
-    subtext: '%',
+    text: '占比分析',
+    subtext: '',
     left: 'center'
   },
   tooltip: {

@@ -1,36 +1,62 @@
 import React, { useState } from 'react';
-import { Table, Space ,Button } from 'antd';
+import { Table, Tag, Space ,Button } from 'antd';
+import {
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+} from '@ant-design/icons';
 
 const dataSource = [
   {
     key: '1',
-    name: '胡彦斌',
-    age: 32,
+    name: '充话费1',
+    createTime: '2021-09-09',
+    endTime: '2021-09-09',
+    status: true,
     address: '西湖区湖底公园1号',
   },
   {
     key: '2',
-    name: '胡彦祖',
-    age: 42,
+    name: '充话费2',
+    createTime: '2021-09-09',
+    endTime: '2021-09-09',
+    status: false,
     address: '西湖区湖底公园1号',
   },
 ];
 
 const columns = [
   {
-    title: '姓名',
+    title: '项目名称',
     dataIndex: 'name',
     key: 'name',
   },
   {
-    title: '年龄',
-    dataIndex: 'age',
-    key: 'age',
+    title: '创建时间',
+    dataIndex: 'createTime',
+    key: 'createTime',
   },
   {
-    title: '住址',
-    dataIndex: 'address',
-    key: 'address',
+    title: '到期时间',
+    dataIndex: 'endTime',
+    key: 'endTime',
+  },
+  {
+    title: '是否完成',
+    dataIndex: 'status',
+    key: 'status',
+    render: (status, record) => (
+      <Space>
+        {
+          status 
+          ? <Tag icon={<CheckCircleOutlined />} color="success">
+             通过
+          </Tag>
+          :<Tag icon={<CloseCircleOutlined />} color="error">
+             过期
+          </Tag>
+        }
+      </Space>
+    )
   },
   {
     title: '操作',
@@ -40,8 +66,8 @@ const columns = [
          <Button type="primary" size="small">
           通过
         </Button>
-        <Button type="primary" size="small" danger>
-          废弃
+        <Button size="small">
+          拒绝
         </Button>
        </Space>
     ),
